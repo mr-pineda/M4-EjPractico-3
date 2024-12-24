@@ -67,4 +67,4 @@ En todas las pantallas Hay un boton para agendar Hora, el cual solicita datos me
 
 6. Comprobación de Tipos con PropTypes
 
-   - [ ] Implementa PropTypes en todos los componentes para verificar los tipos de datos y asegurar que los valores pasados como props son válidos, evitando errores en la aplicación.
+   - [x] Implementa PropTypes en todos los componentes para verificar los tipos de datos y asegurar que los valores pasados como props son válidos, evitando errores en la aplicación.

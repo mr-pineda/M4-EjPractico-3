@@ -1,3 +1,4 @@
+//@ts-nocheck
 import {
   Combobox,
   ComboboxButton,
@@ -252,8 +253,8 @@ class AppointmentForm extends Component<
   }
 }
 
-// @ts-ignore
-AppointmentForm.propTypes = {
+// @ts-expect-error
+AppointmentForm.PropTypes = {
   doctorsData: PropTypes.arrayOf(
     PropTypes.exact({
       name: PropTypes.string.isRequired,

@@ -9,20 +9,20 @@ const About = () => {
     // Simular carga inicial de datos
     setData(doctorsData);
   }, []);
-  const [currectDoctor, setCurrentDoctor] = useState<doctorInfo | null>(null);
+  const [currentDoctor, setCurrentDoctor] = useState<doctorInfo | null>(null);
   const [services, setServices] = useState<string>('');
 
   useEffect(() => {
-    if (currectDoctor !== null) {
+    if (currentDoctor !== null) {
       let services = '';
-      currectDoctor.services.forEach((service, idx) => {
+      currentDoctor.services.forEach((service, idx) => {
         services += idx !== 0 ? ', ' + service : service;
       });
       setServices(services);
       return;
     }
     setServices('');
-  }, [currectDoctor]);
+  }, [currentDoctor]);
   return (
     <>
       <div className=' bg-sky-200 w-full px-28 py-16'>
@@ -59,13 +59,13 @@ const About = () => {
         </div>
       </div>
 
-      {currectDoctor !== null && (
+      {currentDoctor !== null && (
         <div className='fixed left-0 top-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center'>
           <div className='bg-white w-1/3 h-1/2 m-auto p-5 rounded'>
-            <h1 className='text-4xl text-center mb-4'>{currectDoctor.name}</h1>
-            <h2 className='text-3xl italic mb-2'>{currectDoctor.specialty}</h2>
+            <h1 className='text-4xl text-center mb-4'>{currentDoctor.name}</h1>
+            <h2 className='text-3xl italic mb-2'>{currentDoctor.specialty}</h2>
             <p className='italic text-justify mb-3'>
-              {currectDoctor.description}
+              {currentDoctor.description}
             </p>
             {services !== '' && (
               <p className=' w-full'>

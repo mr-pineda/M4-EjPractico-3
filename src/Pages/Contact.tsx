@@ -1,5 +1,8 @@
-import doctorsData from '../data/doctors.json';
+//import doctorsData from '../data/doctors.json';
+import { useState, useEffect } from 'react';
+import { obtenerdoctorInfo } from '../scripts/api';
 import AppointmentForm from '../components/AppointmentForm';
+import { doctorInfo } from '../types/data';
 
 const hours = [
   '09:00',
@@ -26,6 +29,17 @@ const hours = [
 const days = ['Lunes', 'Martes', 'Míercoles', 'Jueves', 'Viernes'];
 
 const Contact = () => {
+  const [doctorsData, setDoctorsData] = useState<doctorInfo[]>([]); //Estado para los datos de los Doctores
+
+  useEffect(() => {
+    const fetchDoctorsData = async () => {
+      const data = await obtenerdoctorInfo(); //Llama a la función de la API simulada
+      setDoctorsData(data); //Actualiza el estado con los datos obtenidos
+    };
+
+    fetchDoctorsData(); //Ejecuta la función al montar el componente
+  }, []); // El userEffetc se ejecuta solo una vez cuando el componente se monta
+
   return (
     <>
       <div className=' bg-sky-200 w-full px-28 py-16'>

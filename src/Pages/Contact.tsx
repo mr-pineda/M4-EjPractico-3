@@ -1,4 +1,3 @@
-//import doctorsData from '../data/doctors.json';
 import { useState, useEffect } from 'react';
 import { obtenerdoctorInfo } from '../scripts/api';
 import AppointmentForm from '../components/AppointmentForm';

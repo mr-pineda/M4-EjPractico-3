@@ -22,8 +22,8 @@ class DoctorCard extends Component<DoctorCardProps> {
           onPress(doctor);
         }}
       >
-        <h1 className='text-4xl text-center mb-4'>{doctor.name}</h1>
-        <h2 className='text-3xl italic mb-2'>{doctor.specialty}</h2>
+        <h1 className='text-2xl text-center mb-4'>{doctor.name}</h1>
+        <h2 className='text-xl italic mb-2'>{doctor.specialty}</h2>
       </div>
     );
   }

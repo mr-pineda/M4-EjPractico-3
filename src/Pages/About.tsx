@@ -26,7 +26,9 @@ const About = () => {
   return (
     <>
       <div className=' bg-sky-200 w-full px-28 py-16'>
-        <h1 className=' text-black mb-10'>Agentda tu hora</h1>
+        <h1 className=' text-black mb-10 font-bold text-3xl text-center'>
+          Acerca de nosotros
+        </h1>
         <p className=' text-black'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt
           temporibus provident nostrum eligendi deserunt illum perspiciatis
@@ -37,7 +39,9 @@ const About = () => {
         </p>
       </div>
       <div className=' bg-white w-full px-28 py-16'>
-        <h1 className=' text-black mb-10'>Conoce a nuestro equipo</h1>
+        <h1 className=' text-black mb-10 font-bold text-3xl text-center'>
+          Conoce a nuestro equipo
+        </h1>
         <p className=' text-black'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt
           temporibus provident nostrum eligendi deserunt illum perspiciatis
@@ -46,7 +50,7 @@ const About = () => {
           fugit facilis in nesciunt? Velit voluptate optio, rerum quae ratione
           est. Illum, natus!
         </p>
-        <div className='grid grid-cols-4 gap-4'>
+        <div className='grid grid-cols-4 gap-4 my-5'>
           {data.map((doctor, idx) => (
             <DoctorCard
               key={idx}

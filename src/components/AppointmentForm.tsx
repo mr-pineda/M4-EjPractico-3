@@ -25,7 +25,9 @@ interface AppointmentFormState {
   doctorQuery: string;
   dayQuery: string;
   hourQuery: string;
-  isHovered: boolean;
+  doctorHover: boolean;
+  hourHover: boolean;
+  dayHover: boolean;
 }
 
 class AppointmentForm extends Component<
@@ -33,6 +35,8 @@ class AppointmentForm extends Component<
   AppointmentFormState
 > {
   private doctorInputRef: React.RefObject<HTMLInputElement>;
+  private hourInputRef: React.RefObject<HTMLInputElement>;
+  private dayInputRef: React.RefObject<HTMLInputElement>;
   constructor(props: AppointmentFormProps) {
     super(props);
     this.state = {
@@ -42,10 +46,14 @@ class AppointmentForm extends Component<
       doctorQuery: '',
       dayQuery: '',
       hourQuery: '',
-      isHovered: false,
+      doctorHover: false,
+      hourHover: false,
+      dayHover: false,
     };
 
     this.doctorInputRef = React.createRef();
+    this.hourInputRef = React.createRef();
+    this.dayInputRef = React.createRef();
     this.handleDoctorQueryChange = this.handleDoctorQueryChange.bind(this);
   }
 
@@ -53,34 +61,87 @@ class AppointmentForm extends Component<
     this.setState({ doctorQuery: event.target.value });
   };
 
-  handleMouseEnter() {
-    this.setState({ isHovered: true });
+  doctorMouseEnter() {
+    this.setState({ doctorHover: true });
+  }
+  doctorMouseLeave() {
+    this.setState({ doctorHover: false });
   }
 
-  handleMouseLeave() {
-    this.setState({ isHovered: false });
+  hourMouseEnter() {
+    this.setState({ hourHover: true });
+  }
+  hourMouseLeave() {
+    this.setState({ hourHover: false });
+  }
+
+  dayMouseEnter() {
+    this.setState({ dayHover: true });
+  }
+  dayMouseLeave() {
+    this.setState({ dayHover: false });
   }
 
   componentDidMount() {
-    if (this.doctorInputRef.current) {
-      this.doctorInputRef.current.addEventListener('mouseenter', () => {
-        this.handleMouseEnter();
-      });
-      this.doctorInputRef.current.addEventListener('mouseleave', () => {
-        this.handleMouseLeave();
-      });
-    }
+    if (
+      !this.doctorInputRef.current ||
+      !this.dayInputRef.current ||
+      !this.hourInputRef.current
+    )
+      return;
+
+    this.doctorInputRef.current.focus();
+
+    this.doctorInputRef.current.addEventListener('mouseenter', () => {
+      this.doctorMouseEnter();
+    });
+    this.doctorInputRef.current.addEventListener('mouseleave', () => {
+      this.doctorMouseLeave();
+    });
+
+    this.hourInputRef.current.addEventListener('mouseenter', () => {
+      this.hourMouseEnter();
+    });
+    this.hourInputRef.current.addEventListener('mouseleave', () => {
+      this.hourMouseLeave();
+    });
+
+    this.dayInputRef.current.addEventListener('mouseenter', () => {
+      this.dayMouseEnter();
+    });
+    this.dayInputRef.current.addEventListener('mouseleave', () => {
+      this.dayMouseLeave();
+    });
   }
 
   componentWillUnmount() {
-    if (this.doctorInputRef.current) {
-      this.doctorInputRef.current.removeEventListener('mouseenter', () => {
-        this.handleMouseEnter();
-      });
-      this.doctorInputRef.current.removeEventListener('mouseleave', () => {
-        this.handleMouseLeave();
-      });
-    }
+    if (
+      !this.doctorInputRef.current ||
+      !this.dayInputRef.current ||
+      !this.hourInputRef.current
+    )
+      return;
+
+    this.doctorInputRef.current.addEventListener('mouseenter', () => {
+      this.doctorMouseEnter();
+    });
+    this.doctorInputRef.current.addEventListener('mouseleave', () => {
+      this.doctorMouseLeave();
+    });
+
+    this.hourInputRef.current.addEventListener('mouseenter', () => {
+      this.hourMouseEnter();
+    });
+    this.hourInputRef.current.addEventListener('mouseleave', () => {
+      this.hourMouseLeave();
+    });
+
+    this.dayInputRef.current.addEventListener('mouseenter', () => {
+      this.dayMouseEnter();
+    });
+    this.dayInputRef.current.addEventListener('mouseleave', () => {
+      this.dayMouseLeave();
+    });
   }
 
   handleDayQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,9 +191,8 @@ class AppointmentForm extends Component<
           >
             <div className='relative'>
               <ComboboxInput
-                className={`w-full rounded-lg border-black border-2  py-1.5 pr-8 pl-3 text-sm/6 text-black focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25 ${
-                  this.state.isHovered ? 'bg-sky-100' : 'bg-white/50'
-                }`}
+                className={`w-full rounded-lg border-black border-2  py-1.5 pr-8 pl-3 text-sm/6 text-black focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25 
+                  ${this.state.doctorHover ? 'bg-sky-100' : 'bg-white/50'}`}
                 ref={this.doctorInputRef}
                 displayValue={(doctor: doctorInfo) => doctor?.name}
                 onChange={(event) => this.handleDoctorQueryChange(event)}
@@ -172,7 +232,9 @@ class AppointmentForm extends Component<
             >
               <div className='relative'>
                 <ComboboxInput
-                  className='w-full rounded-lg border-black border-2 bg-white/50 py-1.5 pr-8 pl-3 text-sm/6 text-black focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
+                  className={`w-full rounded-lg border-black border-2 py-1.5 pr-8 pl-3 text-sm/6 text-black focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25
+                    ${this.state.hourHover ? 'bg-sky-100' : 'bg-white/50'}`}
+                  ref={this.hourInputRef}
                   displayValue={(currentHour: string) => currentHour}
                   onChange={(event) => this.handleHourQueryChange(event)}
                 />
@@ -207,7 +269,9 @@ class AppointmentForm extends Component<
             >
               <div className='relative'>
                 <ComboboxInput
-                  className='w-full rounded-lg border-black border-2 bg-white/50 py-1.5 pr-8 pl-3 text-sm/6 text-black focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
+                  className={`w-full rounded-lg border-black border-2 py-1.5 pr-8 pl-3 text-sm/6 text-black focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25
+                    ${this.state.dayHover ? 'bg-sky-100' : 'bg-white/50'}`}
+                  ref={this.dayInputRef}
                   displayValue={(currentDay: string) => currentDay}
                   onChange={(event) => this.handleDayQueryChange(event)}
                 />

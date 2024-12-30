@@ -52,9 +52,9 @@ En todas las pantallas Hay un boton para agendar Hora, el cual solicita datos me
 
 3. Uso de Referencias y Callbacks:
 
-   - [ ] Implementa referencias para interactuar con los elementos del DOM en una de las vistas, como:
-     - [ ] Enfocar automáticamente en un campo de entrada cuando el usuario ingresa a la vista de Citas.
-     - [ ] Usar referencias de callback para gestionar el desplazamiento a diferentes secciones de la vista Home.
+   - [x] Implementa referencias para interactuar con los elementos del DOM en una de las vistas, como:
+     - [x] Enfocar automáticamente en un campo de entrada cuando el usuario ingresa a la vista de Citas.
+     - [x] Cambio de color cuando el mouse posa sobre algun elemento de la vista Citas.
 
 4. Manejo de Datos con API REST Simulada:
 

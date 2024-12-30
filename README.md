@@ -58,7 +58,7 @@ En todas las pantallas Hay un boton para agendar Hora, el cual solicita datos me
 
 4. Manejo de Datos con API REST Simulada:
 
-   - [ ] Simula la obtención de datos del equipo médico y servicios a través de una API REST utilizando fetch y maneja las respuestas de manera asíncrona con async/await.
+   - [x] Simula la obtención de datos del equipo médico y servicios a través de una API REST utilizando fetch y maneja las respuestas de manera asíncrona con async/await.
    - [x] Carga los datos en la vista correspondiente (Equipo Médico, Servicios) al montar el componente, utilizando Hooks como useEffect.
 
 5. Optimización de Rendimiento y Uso de Profiler:

@@ -36,6 +36,28 @@ En todas las pantallas Hay un boton para agendar Hora, el cual solicita datos me
 - El directorio `./src/scripts/` contiene los scripts de JavaScript.
 - El directorio `./src/data/` contiene los archivos .json.
 
+  ## Análisis de Rendimiento con Profiler  
+
+**Profiler** es una herramienta integrada en ReactDevTools que permite analizar y optimizar el rendimiento de una página desarrollada en React.  
+
+Realizamos un análisis de nuestra aplicación en distintas secciones:  
+
+### Página de Inicio  
+- **Tiempo total de renderizado:** **2.6 ms** (velocidad aceptable).  
+- **Componente más lento:** **Header** (**0.2 ms**).  
+- **Componente más rápido:** **Footer** (**0.1 ms**).  
+
+### Sección de Equipo  
+- **Tiempo total de renderizado:** **3.1 ms** 
+- **Componente más lento:** **Header** (**0.2 ms**).  
+- **Componente más rápido:** **Footer** (**0.1 ms**).  
+
+### Sección de Contacto  
+- **Tiempo total de renderizado:** **8.7 ms** 
+- **Componente más lento:** **AppointmentForm** (**0.6 ms**).  
+- **Componente más rápido:** **Footer** (**0.1 ms**).  
+
+
 ## TO-DO (Rúbrica)
 
 1. Implementación de Vistas Complejas con ReactJS:
